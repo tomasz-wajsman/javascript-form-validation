@@ -3,6 +3,8 @@ const smallLettersRegex = new RegExp(/([a-z])\w+/);
 const digitsRegex = new RegExp(/([0-9])\w+/);
 const specialCharactersRegex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
+const Utilities = require('../../util')
+
 const messages = {
   exceptions: {
     TOO_SHORT: 'Password is too short',
@@ -16,6 +18,10 @@ const defaultConfig = {
 };
 
 const validate = (value, config = defaultConfig) => {
+  // check if password is not the common one
+  if (Utilities.Password.isCommon(value)) {
+    throw new Error(messages.exceptions.COMMON_PASSWORD);
+  }
   // check the length
   const length = value.length;
   if (length < config.minLength) {

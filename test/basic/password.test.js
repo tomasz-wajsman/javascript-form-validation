@@ -28,8 +28,8 @@ const incorrectDataset = [
   { input: 'dragon', message: messages.exceptions.COMMON_PASSWORD },
   { input: 'TheComplicatedPasswordWithoutSpecialChars', message: messages.exceptions.PASSWORD_MISSING_CHARS },
   { input: '_AnotherComplicatedPasswordsButWithoutDigits', message: messages.exceptions.PASSWORD_MISSING_CHARS },
-  { input: '---', message: messages.exceptions.NO_LETTERS },
-  { input: '123456', message: messages.exceptions.NO_LETTERS }
+  { input: '------', message: messages.exceptions.PASSWORD_MISSING_CHARS },
+  { input: '09458695486456809', message: messages.exceptions.PASSWORD_MISSING_CHARS }
 ];
 
 describe('Password validation tests', () => {
@@ -45,6 +45,7 @@ describe('Password validation tests', () => {
   test('Throws the proper error for incorrect data', () => {
     incorrectDataset.forEach(data => {
       expect(() => {
+        console.log(data.input)
         basicValidators.Password.validate(data.input)
       }).toThrow(new Error(data.message))
     });
