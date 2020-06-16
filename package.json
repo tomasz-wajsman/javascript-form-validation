@@ -1,0 +1,26 @@
+{
+  "name": "js-validators",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest . --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomasz-wajsman/js-validators.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomasz-wajsman/js-validators/issues"
+  },
+  "homepage": "https://github.com/tomasz-wajsman/js-validators#readme",
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "jest": "^26.0.1"
+  }
+}
