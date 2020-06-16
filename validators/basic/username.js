@@ -1,5 +1,5 @@
 const lettersRegex = new RegExp(/([A-Za-z])\w+/);
-const allowedCharactersRegex = new RegExp(/([A-Za-z0-9._-])\w+/)
+const allowedCharactersRegex = new RegExp(/([^A-Za-z0-9._-])\w+/);
 
 const messages = {
   exceptions: {
@@ -15,7 +15,7 @@ const defaultConfig = {
   maxLength: 20
 };
 
-const validate = (value, config = defaultConfig )=> {
+const validate = (value, config = defaultConfig) => {
   // check the length
   const length = value.length;
   if (length < config.minLength) {
@@ -29,10 +29,10 @@ const validate = (value, config = defaultConfig )=> {
     throw new Error(messages.exceptions.NO_LETTERS);
   }
   // check the string for correct characters
-  if (!allowedCharactersRegex.test(value)) {
+  if (allowedCharactersRegex.test(value)) {
     throw new Error(messages.exceptions.ILLEGAL_CHARACTERS);
   }
-  // return true after the process
+  // return true after the process is done - username is correct
   return true;
 };
 

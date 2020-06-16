@@ -26,8 +26,8 @@ const incorrectDataset = [
   { input: 'a', message: messages.exceptions.TOO_SHORT },
   { input: 'aa', message: messages.exceptions.TOO_SHORT },
   { input: 'aaaaaaaaaaaaaaaaaaaaa', message: messages.exceptions.TOO_LONG },
-  { input: 'a?', message: messages.exceptions.ILLEGAL_CHARACTERS },
-  { input: '#a', message: messages.exceptions.ILLEGAL_CHARACTERS },
+  { input: 'a?aa', message: messages.exceptions.ILLEGAL_CHARACTERS },
+  { input: '#aaa', message: messages.exceptions.ILLEGAL_CHARACTERS },
   { input: '---', message: messages.exceptions.NO_LETTERS },
   { input: '123456', message: messages.exceptions.NO_LETTERS }
 ];
@@ -40,6 +40,13 @@ describe('Username validation tests', () => {
         true,
         `'${data}' username was not validated but it was correct`
       );
+    });
+  });
+  test('Throws the proper error for incorrect data', () => {
+    incorrectDataset.forEach(data => {
+      expect(() => {
+        basicValidators.Username.validate(data.input)
+      }).toThrow(new Error(data.message))
     });
   });
 });
