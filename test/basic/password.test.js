@@ -45,7 +45,6 @@ describe('Password validation tests', () => {
   test('Throws the proper error for incorrect data', () => {
     incorrectDataset.forEach(data => {
       expect(() => {
-        console.log(data.input)
         basicValidators.Password.validate(data.input)
       }).toThrow(new Error(data.message))
     });
