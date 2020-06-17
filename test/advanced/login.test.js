@@ -42,7 +42,6 @@ describe('Login validation tests', () => {
   });
   test('Throws the error for incorrect data', () => {
     incorrectDataset.forEach(data => {
-      console.log(data)
       if (data.message) {
         // catch errors related to main module
         expect(() => {
