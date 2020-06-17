@@ -1,9 +1,9 @@
+const Utilities = require('../../util');
+
 const capitalLettersRegex = new RegExp(/([A-Z])\w+/);
 const smallLettersRegex = new RegExp(/([a-z])\w+/);
 const digitsRegex = new RegExp(/([0-9])\w+/);
 const specialCharactersRegex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-
-const Utilities = require('../../util')
 
 const messages = {
   exceptions: {
@@ -36,7 +36,7 @@ const validate = (value, config = defaultConfig) => {
   ) {
     throw new Error(messages.exceptions.PASSWORD_MISSING_CHARS);
   }
-  // return true after the process is done - username is correct
+  // return true after the process is done - password is correct
   return true;
 };
 
