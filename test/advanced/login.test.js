@@ -5,6 +5,7 @@ const advancedValidators = require('../../validators/advanced');
 
 const messages = {
   exceptions: {
+    EMPTY_FIELDS: 'Fill in all fields',
     PASSWORD_CONTAINS_LOGIN: 'Password cannot contain the username',
     SAME_LOGIN_PASSWORD: 'Username and password are the same'
   }
@@ -15,15 +16,18 @@ const correctDataset = [
   { username: 'tomasz', password: 'b1ah8L@h' }
 ];
 const incorrectDataset = [
+  { username: '', password: '', message: messages.exceptions.EMPTY_FIELDS },
+  { username: 'tomasz', password: '', message: messages.exceptions.EMPTY_FIELDS },
+  { username: '', password: 'tomasz', message: messages.exceptions.EMPTY_FIELDS },
   { username: 'jan.kowalski1', password: 'jan.kowalski1', message: messages.exceptions.SAME_LOGIN_PASSWORD },
   { username: 'example', password: 'Th3_example', message: messages.exceptions.PASSWORD_CONTAINS_LOGIN },
-  { username: 'ab', password: '' },
+  { username: 'ab', password: 'dada' },
   { username: 'abcd', password: 'ab' },
   { username: 'tomasz', password: '123456' },
   { username: 'tomasz', password: 'thisisatest' },
   { username: 'tomasz', password: 'ThisIs@Test' },
   { username: 'tomasz', password: 'Th1sISaTest' },
-  { username: '', password: 'ThisI$aT3st' },
+  { username: 'da', password: 'ThisI$aT3st' },
 ];
 
 describe('Login validation tests', () => {
@@ -38,6 +42,7 @@ describe('Login validation tests', () => {
   });
   test('Throws the error for incorrect data', () => {
     incorrectDataset.forEach(data => {
+      console.log(data)
       if (data.message) {
         // catch errors related to main module
         expect(() => {
