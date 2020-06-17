@@ -22,9 +22,26 @@ const validate = (username, password) => {
     throw new Error(messages.exceptions.PASSWORD_CONTAINS_LOGIN);
   }
   // check username and password with basic validators
-  if (basicValidators.Username.validate(username) && basicValidators.Password.validate(password)) {
-    return true;
+  const errors = [];
+  // username
+  try {
+    basicValidators.Username.validate(username);
+  } catch (e) {
+    errors.push(e);
   }
+  // password
+  try {
+    basicValidators.Password.validate(password);
+  } catch (e) {
+    errors.push(e);
+  }
+  // check how many errors were caught
+  if (errors.length > 0) {
+    // there were errors
+    throw errors;
+  }
+  // return true in the end, this means the success
+  return true;
 };
 
 module.exports = {
