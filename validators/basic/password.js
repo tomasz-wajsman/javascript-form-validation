@@ -1,9 +1,10 @@
 const Utilities = require('../../util');
 
-const capitalLettersRegex = new RegExp(/([A-Z])\w+/);
-const smallLettersRegex = new RegExp(/([a-z])\w+/);
+const capitalLettersRegex = new RegExp(/([A-Z])/);
+const smallLettersRegex = new RegExp(/([a-z])/);
 const digitsRegex = new RegExp(/([0-9])\w+/);
 const specialCharactersRegex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+const passwordRegex = /"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"/
 
 const messages = {
   exceptions: {
