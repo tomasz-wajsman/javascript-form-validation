@@ -2,12 +2,17 @@ const basicValidators = require('../basic');
 
 const messages = {
   exceptions: {
+    EMPTY_FIELDS: 'Fill in all fields',
     PASSWORD_CONTAINS_LOGIN: 'Password cannot contain the username',
     SAME_LOGIN_PASSWORD: 'Username and password are the same'
   }
 };
 
 const validate = (username, password) => {
+  // check if fields are not empty
+  if (username === '' || password === '') {
+    throw new Error(messages.exceptions.EMPTY_FIELDS);
+  }
   // check if username is the same like password
   if (username === password) {
     throw new Error(messages.exceptions.SAME_LOGIN_PASSWORD);
