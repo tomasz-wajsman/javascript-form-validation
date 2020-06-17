@@ -1,7 +1,9 @@
 const Login = require('./login');
+const Register = require('./register');
 
 const extendedValidators = {
-  Login
+  Login,
+  Register
 };
 
 module.exports = extendedValidators;
