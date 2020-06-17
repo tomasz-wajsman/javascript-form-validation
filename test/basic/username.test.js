@@ -46,7 +46,7 @@ describe('Username validation tests', () => {
     incorrectDataset.forEach(data => {
       expect(() => {
         basicValidators.Username.validate(data.input)
-      }).toThrow(new Error(data.message))
+      }).toThrow(new Error(data.message));
     });
   });
 });
