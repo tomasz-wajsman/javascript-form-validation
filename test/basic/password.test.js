@@ -46,7 +46,7 @@ describe('Password validation tests', () => {
     incorrectDataset.forEach(data => {
       expect(() => {
         basicValidators.Password.validate(data.input)
-      }).toThrow(new Error(data.message))
+      }).toThrow(new Error(data.message));
     });
   });
 });

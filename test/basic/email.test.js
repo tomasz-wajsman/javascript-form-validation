@@ -27,7 +27,9 @@ const correctDataset = [
   'email@example.name',
   'email@example.museum',
   'email@example.co.jp',
-  'email@muzeum.museum'
+  'email@muzeum.museum',
+  'contact@slaskie.travel',
+  'server@games.tk'
 ];
 const incorrectDataset = [
   { input: 'plainaddress', message: messages.exceptions.NO_AT },
@@ -60,7 +62,7 @@ describe('Email validation tests', () => {
     incorrectDataset.forEach(data => {
       expect(() => {
         basicValidators.Email.validate(data.input)
-      }).toThrow(new Error(data.message))
+      }).toThrow(new Error(data.message));
     });
   });
 });
